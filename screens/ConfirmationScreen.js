@@ -30,7 +30,7 @@ const ConfirmationScreen = () => {
   const fetchAddresses = async () => {
     try {
       const response = await axios.get(
-        `http://192.168.0.197:8000/addresses/${userId}`
+        `${process.env.REACT_APP_API_URL}:${process.env.REACT_APP_PORT}/addresses/${userId}/${userId}`
       );
       const { addresses } = response.data;
 
@@ -54,7 +54,7 @@ const ConfirmationScreen = () => {
       };
 
       const response = await axios.post(
-        "http://192.168.0.197:8000/orders",
+        `${process.env.REACT_APP_API_URL}:${process.env.REACT_APP_PORT}/addresses/${userId}/orders`,
         orderData
       );
       if (response.status === 200) {
@@ -97,7 +97,7 @@ const ConfirmationScreen = () => {
       };
 
       const response = await axios.post(
-        "http://192.168.0.197:8000/orders",
+        `${process.env.REACT_APP_API_URL}:${process.env.REACT_APP_PORT}/addresses/${userId}/orders`,
         orderData
       );
       if (response.status === 200) {

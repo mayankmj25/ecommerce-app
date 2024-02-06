@@ -40,7 +40,7 @@ const LoginScreen = () => {
     };
 
     axios
-      .post("http://192.168.0.197:8000/login", user)
+      .post('${process.env.REACT_APP_API_URL}:${process.env.REACT_APP_PORT}/addresses/${userId}/login', user)
       .then((response) => {
         console.log(response);
         const token = response.data.token;

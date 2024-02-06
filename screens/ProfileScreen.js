@@ -53,7 +53,7 @@ const ProfileScreen = () => {
     const fetchUserProfile = async () => {
       try {
         const response = await axios.get(
-          `http://192.168.0.197:8000/profile/${userId}`
+          `${process.env.REACT_APP_API_URL}:${process.env.REACT_APP_PORT}/addresses/${userId}/profile/${userId}`
         );
         const { user } = response.data;
         setUser(user);
@@ -76,7 +76,7 @@ const ProfileScreen = () => {
     const fetchOrders = async () => {
       try {
         const response = await axios.get(
-          `http://192.168.0.197:8000/orders/${userId}`
+          `${process.env.REACT_APP_API_URL}:${process.env.REACT_APP_PORT}/addresses/${userId}/${userId}`
         );
         const orders = response.data.orders;
         setOrders(orders);

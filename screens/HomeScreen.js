@@ -236,7 +236,7 @@ const HomeScreen = () => {
   const fetchAddresses = async () => {
     try {
       const response = await axios.get(
-        `http://192.168.0.197:8000/addresses/${userId}`
+        `${process.env.REACT_APP_API_URL}:${process.env.REACT_APP_PORT}/addresses/${userId}/${userId}`
       );
       const { addresses } = response.data;
 

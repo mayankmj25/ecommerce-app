@@ -3477,6 +3477,11 @@
   "resolved" "https://registry.npmjs.org/dotenv-expand/-/dotenv-expand-10.0.0.tgz"
   "version" "10.0.0"
 
+"dotenv@^16.4.1":
+  "integrity" "sha512-CjA3y+Dr3FyFDOAMnxZEGtnW9KBR2M0JvvUtXNW+dYJL5ROWxP9DUHCwgFqpMk0OXCc0ljhaNTr2w/kutYIcHQ=="
+  "resolved" "https://registry.npmjs.org/dotenv/-/dotenv-16.4.1.tgz"
+  "version" "16.4.1"
+
 "dotenv@~16.0.3":
   "integrity" "sha512-7GO6HghkA5fYG9TYnNxi14/7K9f5occMlp3zXAuSxn7CKCxt9xbNWG7yF8hTCSUchlfWSe3uLmlPfigevRItzQ=="
   "resolved" "https://registry.npmjs.org/dotenv/-/dotenv-16.0.3.tgz"

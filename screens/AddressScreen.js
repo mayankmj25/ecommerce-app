@@ -9,7 +9,7 @@ import {
 } from "react-native";
 import React, { useEffect, useState,useContext } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import jwt_decode from "jwt-decode"
+import jwtDecode from 'jwt-decode';
 import { UserType } from "../UserContext";
 import axios from "axios";
 import { useNavigation } from "@react-navigation/native";
@@ -25,14 +25,28 @@ const AddressScreen = () => {
   const {userId,setUserId} = useContext(UserType)
   useEffect(() => {
     const fetchUser = async() => {
+      try {
         const token = await AsyncStorage.getItem("authToken");
-        const decodedToken = jwt_decode(token);
-        const userId = decodedToken.userId;
-        setUserId(userId)
+        if (token) {
+          const decodedToken = jwtDecode(token); // Use the imported jwtDecode function
+          console.log("Decoded Token:", decodedToken);
+          if (decodedToken && decodedToken.userId) {
+            setUserId(decodedToken.userId);
+          } else {
+            console.error("Token decoding failed or userId is missing");
+          }
+        } else {
+          console.error("No token found in AsyncStorage");
+        }
+      } catch (error) {
+        console.error("Error fetching user from token:", error);
+      }
     }
-
+  
     fetchUser();
-  },[]);
+  }, []);
+  
+  
   console.log(userId)
   const handleAddAddress = () => {
       const address = {
@@ -44,7 +58,7 @@ const AddressScreen = () => {
           postalCode
       }
 
-      axios.post("http://192.168.0.197:8000/addresses",{userId,address}).then((response) => {
+      axios.post(`${process.env.REACT_APP_API_URL}:${process.env.REACT_APP_PORT}/addresses/${userId}/addresses`,{userId,address}).then((response) => {
           Alert.alert("Success","Addresses added successfully");
           setName("");
           setMobileNo("");
